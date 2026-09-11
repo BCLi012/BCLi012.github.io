@@ -1,0 +1,63 @@
+{
+  "site": {
+    "name": "静水深流",
+    "tagline": "保持简单，保持热爱。",
+    "subtitle": "开发者 · 写作者 · 生活的观察者"
+  },
+  "posts": [
+    {
+      "id": "design-restraint",
+      "title": "关于设计的一点偏执：克制",
+      "category": "技术",
+      "tags": ["设计", "产品"],
+      "summary": "把东西加到界面上很容易，难的是说「这个不需要」。",
+      "created_at": "2026-09-08T11:20:00+08:00",
+      "file": "posts/design-restraint.md"
+    },
+    {
+      "id": "rainy-september",
+      "title": "九月的雨与一杯冷掉的咖啡",
+      "category": "随笔",
+      "tags": ["生活", "秋天"],
+      "summary": "雨下了一整个下午，咖啡从热到冷，我也从焦躁坐到了平静。",
+      "created_at": "2026-09-03T20:40:00+08:00",
+      "file": "posts/rainy-september.md"
+    },
+    {
+      "id": "sleepless-night",
+      "title": "给一个失眠的夜晚",
+      "category": "文艺",
+      "tags": ["诗歌"],
+      "summary": "凌晨三点，城市像一台忘记关掉的机器，嗡嗡地亮着。",
+      "created_at": "2026-08-25T02:58:00+08:00",
+      "file": "posts/sleepless-night.md"
+    },
+    {
+      "id": "autumn-quotes",
+      "title": "秋日书摘：关于光的三句话",
+      "category": "文艺",
+      "tags": ["书摘", "诗歌"],
+      "summary": "好的句子像光 —— 不解释，只是照进来。",
+      "created_at": "2026-08-18T21:05:00+08:00",
+      "file": "posts/autumn-quotes.md"
+    },
+    {
+      "id": "first-letter",
+      "title": "写给自己的第一封信",
+      "category": "随笔",
+      "tags": ["生活", "思考"],
+      "summary": "开一个博客，就像在互联网上租一间小房子 —— 把喜欢的东西搬进去，然后慢慢住下来。",
+      "created_at": "2026-08-02T09:12:00+08:00",
+      "file": "posts/first-letter.md"
+    },
+    {
+      "id": "refactor-notes",
+      "title": "把复杂的事情做简单：一次重构的记录",
+      "category": "技术",
+      "tags": ["架构", "工程实践"],
+      "summary": "重构的第一步从来不是改代码，而是承认自己当初想复杂了。",
+      "created_at": "2026-07-21T15:30:00+08:00",
+      "file": "posts/refactor-notes.md"
+    }
+  ]
+}

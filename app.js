@@ -14,6 +14,41 @@ const cloud = WorkBuddyCloud.createWorkBuddyCloud({
   publishableKey: publicConfig.publishableKey,
 });
 
+// ---- 运行环境 ----
+// 云端域名下启用完整云端能力（数据库 / 登录 / 上传）；
+// GitHub Pages 与本地预览下改为读取仓库内的 Markdown 文章，保证阅读体验完整。
+const CLOUD_MODE = /(^|\.)workbuddy\.link$/.test(location.hostname);
+const CLOUD_SITE = 'https://apple-style-blog.app.workbuddy.link/';
+
+// ---- 静态文章仓库（posts/manifest.json + Markdown 文件）----
+const staticStore = {
+  _manifest: null,
+  async manifest() {
+    if (!this._manifest) {
+      const res = await fetch('posts/manifest.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error('文章清单加载失败');
+      this._manifest = await res.json();
+    }
+    return this._manifest;
+  },
+  async list({ category, tag } = {}) {
+    const { posts } = await this.manifest();
+    return posts.filter(
+      (p) =>
+        (!category || p.category === category) &&
+        (!tag || (p.tags || []).includes(tag))
+    );
+  },
+  async one(id) {
+    const { posts } = await this.manifest();
+    const meta = posts.find((p) => String(p.id) === String(id));
+    if (!meta) return null;
+    const res = await fetch(meta.file, { cache: 'no-cache' });
+    const content = res.ok ? await res.text() : '';
+    return { ...meta, content, status: 'published', owner_id: 'static' };
+  },
+};
+
 // ---- 全局状态 ----
 let currentUser = null; // { id, email }
 const CATEGORIES = ['随笔', '文艺', '技术', '读书', '生活'];
@@ -59,7 +94,7 @@ async function renderMarkdown(md) {
   const re = /(?:src|href)="(cloud:[^"]+)"/g;
   let m;
   while ((m = re.exec(html))) paths.add(m[1].slice('cloud:'.length));
-  if (paths.size) {
+  if (paths.size && CLOUD_MODE) {
     const signed = await cloud.storage.createSignedUrls([...paths], 3600);
     const map = {};
     if (signed && signed.data) {
@@ -72,12 +107,16 @@ async function renderMarkdown(md) {
       const url = map[p];
       return url ? `${attr}="${url}"` : `${attr}=""`;
     });
+  } else if (paths.size) {
+    // 静态模式无法访问云端存储，去掉未解析的占位引用
+    html = html.replace(/(src|href)="cloud:[^"]*"/g, '');
   }
   return DOMPurify.sanitize(html, { ADD_ATTR: ['target'] });
 }
 
 // ---- 认证辅助 ----
 async function refreshUser() {
+  if (!CLOUD_MODE) { currentUser = null; renderNavUser(); return; }
   try {
     const { data: session, error } = await cloud.auth.getSession();
     if (error || !session) { currentUser = null; } else {
@@ -113,6 +152,16 @@ $('#navLogout').addEventListener('click', async () => {
 
 // ---- 数据访问 ----
 async function fetchPosts({ category, tag, limit } = {}) {
+  // 静态模式：读取仓库内的 Markdown 文章清单
+  if (!CLOUD_MODE) {
+    try {
+      const list = await staticStore.list({ category, tag });
+      return limit ? list.slice(0, limit) : list;
+    } catch (e) {
+      toast('文章加载失败：' + e.message);
+      return [];
+    }
+  }
   let q = cloud.database
     .from('posts')
     .select('*')
@@ -127,6 +176,15 @@ async function fetchPosts({ category, tag, limit } = {}) {
 }
 
 async function fetchPost(id) {
+  // 静态模式：清单 + 对应 Markdown 文件
+  if (!CLOUD_MODE) {
+    try {
+      return await staticStore.one(id);
+    } catch (e) {
+      toast('文章加载失败：' + e.message);
+      return null;
+    }
+  }
   const { data, error } = await cloud.database.from('posts').select('*').eq('id', id).maybeSingle();
   if (error) { toast('文章加载失败'); return null; }
   return data;
@@ -342,12 +400,32 @@ function pageAbout() {
 // 页面：后台（登录 / 注册 / 我的文章 / 编辑器）
 // =========================================================
 async function pageAdmin() {
+  // 静态托管（GitHub Pages）下没有云端鉴权，写作后台只在云端站点可用
+  if (!CLOUD_MODE) return pageStaticNotice();
   await refreshUser();
   const hash = location.hash || '#/admin';
   if (hash.startsWith('#/admin/edit')) return pageEditor(hash.split('/')[3]);
   if (hash.startsWith('#/admin/new')) return pageEditor();
   if (!currentUser) return pageLogin();
   return pageDashboard();
+}
+
+// ---- 静态托管模式说明 ----
+function pageStaticNotice() {
+  app.innerHTML = `
+    <div class="auth-wrap fade-in">
+      <div class="auth-card">
+        <h2>写作后台在云端站点</h2>
+        <p class="auth-sub">当前页面由 GitHub Pages 静态托管</p>
+        <p style="color:var(--text-2);font-size:14px;line-height:1.8">
+          这里展示的文章来自仓库中的 Markdown 文件，浏览完全可用。
+          但登录、发布文章、上传图片需要云端鉴权，而云端服务只对已登记的站点域名开放，
+          因此这些功能请在云端站点使用。
+        </p>
+        <a class="btn btn-primary" href="${CLOUD_SITE}" style="width:100%;text-align:center;margin-top:22px">前往云端站点写作</a>
+        <div class="auth-switch"><a href="#/posts">← 返回文章列表</a></div>
+      </div>
+    </div>`;
 }
 
 // ---- 登录 / 注册 ----
