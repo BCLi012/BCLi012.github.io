@@ -9,15 +9,21 @@ const publicConfig = {
   publishableKey: 'wbpk_e9R62fyi7nk2vWwvXL3A8I_U80CQPRLBARxUFw6RFRGmJugPu2KGYRj',
 };
 
-const cloud = WorkBuddyCloud.createWorkBuddyCloud({
-  endpoint: publicConfig.endpoint,
-  publishableKey: publicConfig.publishableKey,
-});
+// 云端 SDK 可能因网络原因加载失败；失败时静态模式仍可正常浏览
+let cloud = null;
+try {
+  cloud = WorkBuddyCloud.createWorkBuddyCloud({
+    endpoint: publicConfig.endpoint,
+    publishableKey: publicConfig.publishableKey,
+  });
+} catch (e) {
+  console.warn('云端 SDK 未就绪，将以静态模式运行：', e?.message || e);
+}
 
 // ---- 运行环境 ----
 // 云端域名下启用完整云端能力（数据库 / 登录 / 上传）；
 // GitHub Pages 与本地预览下改为读取仓库内的 Markdown 文章，保证阅读体验完整。
-const CLOUD_MODE = /(^|\.)workbuddy\.link$/.test(location.hostname);
+const CLOUD_MODE = !!cloud && /(^|\.)workbuddy\.link$/.test(location.hostname);
 const CLOUD_SITE = 'https://apple-style-blog.app.workbuddy.link/';
 
 // ---- 静态文章仓库（posts/manifest.json + Markdown 文件）----
@@ -87,8 +93,15 @@ function setLoading(msg = 'LOADING') {
 }
 
 // ---- Markdown 渲染（cloud: 存储路径 → 签名 URL）----
+const sanitize = (html) =>
+  typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(html, { ADD_ATTR: ['target'] }) : html;
+
 async function renderMarkdown(md) {
-  let html = marked.parse(md || '');
+  // CDN 不可用时退化为纯文本展示，避免页面空白
+  let html =
+    typeof marked !== 'undefined'
+      ? marked.parse(md || '')
+      : `<pre>${esc(md || '')}</pre>`;
   // 收集 cloud: 引用（图片 / 附件链接）
   const paths = new Set();
   const re = /(?:src|href)="(cloud:[^"]+)"/g;
@@ -111,7 +124,7 @@ async function renderMarkdown(md) {
     // 静态模式无法访问云端存储，去掉未解析的占位引用
     html = html.replace(/(src|href)="cloud:[^"]*"/g, '');
   }
-  return DOMPurify.sanitize(html, { ADD_ATTR: ['target'] });
+  return sanitize(html);
 }
 
 // ---- 认证辅助 ----
@@ -142,6 +155,7 @@ function renderNavUser() {
 }
 
 $('#navLogout').addEventListener('click', async () => {
+  if (!cloud) return;
   await cloud.auth.signOut();
   currentUser = null;
   renderNavUser();
@@ -725,7 +739,7 @@ async function pageEditor(id) {
 // 启动
 // =========================================================
 (async function init() {
-  marked.setOptions({ breaks: true, gfm: true });
+  if (typeof marked !== 'undefined') marked.setOptions({ breaks: true, gfm: true });
   await refreshUser();
   route();
 })();
