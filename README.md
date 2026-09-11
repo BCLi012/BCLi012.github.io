@@ -4,7 +4,7 @@
 
 | 形态 | 地址 | 说明 |
 |---|---|---|
-| GitHub Pages（静态） | https://Bruce-C-L.github.io/ | 由本仓库直接托管，纯静态浏览 |
+| GitHub Pages（静态） | https://bruceli012.github.io/ | 由本仓库直接托管，纯静态浏览 |
 | 云端站点（完整） | https://apple-style-blog.app.workbuddy.link/ | 含数据库、登录、写作后台 |
 
 ## 功能
