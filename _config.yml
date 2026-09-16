@@ -25,6 +25,10 @@ collections:
     output: true
     permalink: /thoughts/:name/
 
+  # 首页 news 区块：短公告，不单独生成页面
+  news:
+    output: false
+
 # Defaults for collections
 defaults:
   - scope:

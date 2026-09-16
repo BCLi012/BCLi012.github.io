@@ -1,6 +1,7 @@
 {% comment %}
   日期左对齐列表（al-folio 风格）：日期 ｜ 标题 + 摘要
   用法：{% include entry-table.html items=site.projects lang='en' limit=3 %}
+  条目可选的 link 字段优先作为链接；没有 link 也没有 url 时显示为纯文本。
 {% endcomment %}
 {% assign tbl_lang = include.lang | default: 'en' %}
 {% if tbl_lang == 'zh' %}
@@ -18,7 +19,7 @@
     {% for item in items limit: tbl_limit %}
     <tr>
       <th class="entry-table-date" scope="row">{{ item.date | date: "%Y-%m-%d" }}</th>
-      <td class="entry-table-body"><a class="entry-table-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>{% if item.summary %}<span class="entry-table-summary">{{ item.summary }}</span>{% endif %}</td>
+      <td class="entry-table-body">{% if item.link and item.link contains '://' %}<a class="entry-table-title" href="{{ item.link }}">{{ item.title }}</a>{% elsif item.link %}<a class="entry-table-title" href="{{ item.link | relative_url }}">{{ item.title }}</a>{% elsif item.url %}<a class="entry-table-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>{% else %}<span class="entry-table-title">{{ item.title }}</span>{% endif %}{% if item.summary %}<span class="entry-table-summary">{{ item.summary }}</span>{% endif %}</td>
     </tr>
     {% endfor %}
   </tbody>

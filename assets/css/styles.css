@@ -554,7 +554,7 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
 
 .profile-body {
   display: grid;
-  grid-template-columns: 270px 1fr;
+  grid-template-columns: 1fr 270px;
   gap: 2.25rem;
   align-items: start;
 }
@@ -576,7 +576,12 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
   color: var(--text-secondary);
 }
 
-.profile-elsewhere { margin-top: 1.5rem; }
+.profile-elsewhere {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.35rem;
+  margin-top: 1.5rem;
+}
 
 .prose .profile-social {
   display: inline-flex;
@@ -655,7 +660,7 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
   /* 资料块与日期列表在窄屏改为堆叠 */
   .profile { padding-top: 1.25rem; }
   .profile-body { grid-template-columns: 1fr; gap: 1.35rem; }
-  .profile-photo { max-width: 190px; }
+  .profile-photo { order: -1; max-width: 190px; }
 
   .entry-table tr { display: block; padding: 0.7rem 0; }
   .entry-table-date { display: block; width: auto; padding: 0 0 0.15rem; }

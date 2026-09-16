@@ -30,7 +30,6 @@
     {% assign nav_arts = '艺术' %}
     {% assign nav_sports = '运动' %}
     {% assign nav_thoughts = '随笔' %}
-    {% assign nav_about = '关于' %}
     {% assign nav_contact = '联系' %}
     {% assign search_placeholder = '搜索站内内容…' %}
     {% assign search_json = '/search-zh.json' %}
@@ -40,14 +39,13 @@
     {% assign lang_title = 'Switch to English' %}
   {% else %}
     {% assign base = '' %}
-    {% assign nav_home = 'Home' %}
-    {% assign nav_projects = 'Projects' %}
-    {% assign nav_research = 'Research' %}
-    {% assign nav_arts = 'Arts' %}
-    {% assign nav_sports = 'Sports' %}
-    {% assign nav_thoughts = 'Thoughts' %}
-    {% assign nav_about = 'About' %}
-    {% assign nav_contact = 'Contact' %}
+    {% assign nav_home = 'home' %}
+    {% assign nav_projects = 'projects' %}
+    {% assign nav_research = 'research' %}
+    {% assign nav_arts = 'arts' %}
+    {% assign nav_sports = 'sports' %}
+    {% assign nav_thoughts = 'thoughts' %}
+    {% assign nav_contact = 'contact' %}
     {% assign search_placeholder = 'Search…' %}
     {% assign search_json = '/search-en.json' %}
     {% assign lang_alt = '/zh' | append: page.url %}
@@ -65,7 +63,6 @@
         <a href="{{ base | append: '/arts/' | relative_url }}" {% if page.url contains '/arts' %}class="active"{% endif %}>{{ nav_arts }}</a>
         <a href="{{ base | append: '/sports/' | relative_url }}" {% if page.url contains '/sports' %}class="active"{% endif %}>{{ nav_sports }}</a>
         <a href="{{ base | append: '/thoughts/' | relative_url }}" {% if page.url contains '/thoughts' %}class="active"{% endif %}>{{ nav_thoughts }}</a>
-        <a href="{{ base | append: '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>{{ nav_about }}</a>
         <a href="{{ base | append: '/contact/' | relative_url }}" {% if page.url contains '/contact' %}class="active"{% endif %}>{{ nav_contact }}</a>
       </nav>
       <div class="header-actions">
