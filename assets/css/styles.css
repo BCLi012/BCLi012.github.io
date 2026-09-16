@@ -46,6 +46,18 @@ html[data-theme="dark"] {
    ========================================================================== */
 * { box-sizing: border-box; }
 
+/* 确保原生控件不使用系统蓝色强调色 */
+html { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+
+* { -webkit-tap-highlight-color: transparent; }
+
+input, textarea, select, button, progress { accent-color: var(--text); }
+
+a, button, input, textarea, select { outline-color: var(--text-secondary); }
+:focus-visible { outline: 2px solid var(--text-secondary); outline-offset: 2px; }
+:focus:not(:focus-visible) { outline: none; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -243,41 +255,40 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
 
 .hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-/* ---------- Hero quote rotator ---------- */
-.hero-quotes {
+/* ---------- Quote rotator (site footer) ---------- */
+.quote-rotator {
   display: grid;
-  margin: 2.25rem 0 0;
+  max-width: 620px;
+  margin: 0 auto 1.35rem;
 }
 
-.hero-quote {
+.quote-item {
   grid-area: 1 / 1;
   margin: 0;
-  padding: 0 0 0 1.1rem;
-  border-left: 2px solid var(--text);
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(8px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
   pointer-events: none;
 }
-.hero-quote.is-active { opacity: 1; transform: none; pointer-events: auto; }
+.quote-item.is-active { opacity: 1; transform: none; pointer-events: auto; }
 
-.hero-quote-text {
+.quote-text {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--text-secondary);
 }
 
-.hero-quote-author {
-  margin-top: 0.4rem;
-  font-size: 0.82rem;
+.quote-author {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
   letter-spacing: 0.02em;
   color: var(--text-tertiary);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-quote { transition: none; transform: none; }
+  .quote-item { transition: none; transform: none; }
 }
 
 /* ---------- Ink divider ---------- */
@@ -475,12 +486,13 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 1.6rem 0 2.2rem;
+  padding: 2.2rem 0 2.4rem;
   text-align: center;
   font-size: 0.85rem;
   color: var(--text-tertiary);
 }
 .site-footer a { color: var(--text-secondary); }
+.site-footer-note { display: block; }
 
 /* ==========================================================================
    Responsive

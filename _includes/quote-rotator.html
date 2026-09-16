@@ -1,17 +1,17 @@
 {% comment %}
-  Hero 名言轮播：每 6 秒在 quotes.yml 中随机切换一条。
+  页脚名言轮播：每 6 秒在 quotes.yml 中随机切换一条。
   数据见 _data/quotes.yml —— 直接编辑该文件即可添加引文。
 {% endcomment %}
 {% assign is_zh = false %}
 {% if page.lang == 'zh' %}{% assign is_zh = true %}{% endif %}
-<div class="hero-quotes" id="hero-quotes" data-interval="6000">
+<div class="quote-rotator" id="quote-rotator" data-interval="6000">
   {% for q in site.data.quotes %}
     {% assign text = q.en %}
     {% if is_zh and q.zh and q.zh != '' %}{% assign text = q.zh %}{% endif %}
     {% if text and text != '' %}
-    <blockquote class="hero-quote{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}">
-      <p class="hero-quote-text">{{ text }}</p>
-      {% if q.author %}<footer class="hero-quote-author">— {{ q.author }}</footer>{% endif %}
+    <blockquote class="quote-item{% if forloop.first %} is-active{% endif %}">
+      <p class="quote-text">{{ text }}</p>
+      {% if q.author %}<footer class="quote-author">— {{ q.author }}</footer>{% endif %}
     </blockquote>
     {% endif %}
   {% endfor %}

@@ -9,7 +9,7 @@
   <meta property="og:title" content="{{ page.title | default: site.title }}" />
   <meta property="og:description" content="{{ page.summary | default: site.description }}" />
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}" />
-  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
   <script>
     (function () {
       var t = localStorage.getItem('theme');
@@ -85,8 +85,11 @@
     {{ content }}
   </main>
 
-  <footer class="site-footer wrap">
-    <small>© {{ site.title }} · {{ "now" | date: "%Y" }} · Built with <a href="https://jekyllrb.com/">Jekyll</a></small>
+  <footer class="site-footer">
+    <div class="wrap">
+      {% include quote-rotator.html %}
+      <small class="site-footer-note">© {{ site.title }} · {{ "now" | date: "%Y" }} · Built with <a href="https://jekyllrb.com/">Jekyll</a></small>
+    </div>
   </footer>
 
   <script>
@@ -106,9 +109,9 @@
         });
       }
 
-      var rotator = document.getElementById('hero-quotes');
+      var rotator = document.getElementById('quote-rotator');
       if (rotator) {
-        var quotes = rotator.querySelectorAll('.hero-quote');
+        var quotes = rotator.querySelectorAll('.quote-item');
         if (quotes.length > 1) {
           var current = 0;
           var interval = parseInt(rotator.getAttribute('data-interval'), 10) || 6000;

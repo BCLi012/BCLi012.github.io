@@ -12,7 +12,6 @@ lang: zh
     <a class="button" href="{{ '/zh/about/' | relative_url }}">关于我</a>
     <a class="button button-ghost" href="{{ '/zh/projects/' | relative_url }}">看看项目</a>
   </div>
-  {% include hero-quotes.html %}
 </section>
 
 {% include ink-divider.html %}
