@@ -704,8 +704,7 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
   .entry-table-date { display: block; width: auto; padding: 0 0 0.15rem; }
   .entry-table-body { display: block; padding: 0; }
 
-  /* 页脚在窄屏保持居中；回到顶部按钮收紧 */
-  .footer-bottom { gap: 0.3rem; }
+  /* 回到顶部按钮在小屏收紧 */
   .back-to-top { right: 1rem; bottom: 1rem; width: 2.4rem; height: 2.4rem; }
 }
 
