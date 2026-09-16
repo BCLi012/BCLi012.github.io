@@ -386,6 +386,12 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 
 .article-meta { margin: 0 0 1.5rem; color: var(--text-tertiary); font-size: 0.88rem; }
 
+/* ---------- Post header / footer ---------- */
+.post-head { margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+.post-title { font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 750; margin: 0 0 0.7rem; }
+.post-meta { margin: 0; }
+.article-back { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.92rem; }
+
 /* ==========================================================================
    Footer
    ========================================================================== */

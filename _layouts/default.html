@@ -8,6 +8,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{{ page.title | default: site.title }}" />
   <meta property="og:description" content="{{ page.summary | default: site.description }}" />
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
   <script>
     (function () {
@@ -17,7 +18,7 @@
       }
     })();
   </script>
-  <script defer src="https://unpkg.com/simple-jekyll-search@1.9.2/dist/simple-jekyll-search.min.js"></script>
+  <script defer src="{{ '/assets/vendor/simple-jekyll-search.min.js' | relative_url }}"></script>
 </head>
 <body>
   <header class="site-header">

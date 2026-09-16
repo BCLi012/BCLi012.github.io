@@ -29,27 +29,27 @@ defaults:
       path: ""
       type: projects
     values:
-      layout: default
+      layout: post
   - scope:
       path: ""
       type: research
     values:
-      layout: default
+      layout: post
   - scope:
       path: ""
       type: creative
     values:
-      layout: default
+      layout: post
   - scope:
       path: ""
       type: sports
     values:
-      layout: default
+      layout: post
   - scope:
       path: ""
       type: thoughts
     values:
-      layout: default
+      layout: post
 
 # Include the search index
 exclude:

@@ -1,0 +1,15 @@
+---
+layout: default
+---
+{% assign section = page.url | split: '/' %}
+<article>
+  <header class="post-head">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="entry-meta post-meta">
+      {% if page.date %}<time class="entry-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>{% endif %}
+      {% if page.tags %}{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}{% endif %}
+    </div>
+  </header>
+  {{ content }}
+  <p class="article-back"><a href="{{ '/' | append: section[1] | append: '/' | relative_url }}">← Back to {{ section[1] | capitalize }}</a></p>
+</article>
