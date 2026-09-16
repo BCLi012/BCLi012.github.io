@@ -1,5 +1,5 @@
 {% comment %}
-  页脚名言轮播：每 6 秒在 quotes.yml 中随机切换一条。
+  页脚题词：每 6 秒随机轮换一条，署名以破折号内联在句末。
   数据见 _data/quotes.yml —— 直接编辑该文件即可添加引文。
 {% endcomment %}
 {% assign is_zh = false %}
@@ -10,8 +10,7 @@
     {% if is_zh and q.zh and q.zh != '' %}{% assign text = q.zh %}{% endif %}
     {% if text and text != '' %}
     <blockquote class="quote-item{% if forloop.first %} is-active{% endif %}">
-      <p class="quote-text">{{ text }}</p>
-      {% if q.author %}<footer class="quote-author">— {{ q.author }}</footer>{% endif %}
+      <p class="quote-text">{{ text }}{% if q.author %} <span class="quote-author">— {{ q.author }}</span>{% endif %}</p>
     </blockquote>
     {% endif %}
   {% endfor %}

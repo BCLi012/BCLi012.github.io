@@ -32,6 +32,8 @@
     {% assign lang_label = '中文' %}
     {% assign lang_title = '切换到中文' %}
   {% endif %}
+  {% assign content_wide = false %}
+  {% if page.url == '/' or page.url == '/zh/' %}{% assign content_wide = true %}{% endif %}
 
 <!doctype html>
 <html lang="{{ page.lang | default: 'en' }}">
@@ -89,17 +91,14 @@
     </div>
   </header>
 
-  <main class="wrap main-content prose{% if page.url == '/' or page.url == '/zh/' %} main-content-wide{% endif %}">
+  <main class="wrap main-content prose{% if content_wide %} main-content-wide{% endif %}">
     {{ content }}
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
+    <div class="wrap footer-inner{% if content_wide %} main-content-wide{% endif %}">
       {% include quote-rotator.html %}
-      <div class="footer-bottom">
-        <p class="footer-copy">© {{ "now" | date: "%Y" }} {{ site_name }} · <a href="{{ base | append: '/about/' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a></p>
-        <p class="footer-credits">{% if page.lang == 'zh' %}由 <a href="https://jekyllrb.com/">Jekyll</a> 驱动 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a>{% else %}Powered by <a href="https://jekyllrb.com/">Jekyll</a> · Hosted on <a href="https://pages.github.com/">GitHub Pages</a>{% endif %}</p>
-      </div>
+      <p class="footer-copy">© {{ "now" | date: "%Y" }} {{ site_name }} · <a href="{{ base | append: '/about/' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a> · {% if page.lang == 'zh' %}由 <a href="https://jekyllrb.com/">Jekyll</a> 驱动 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a>{% else %}Powered by <a href="https://jekyllrb.com/">Jekyll</a> · Hosted on <a href="https://pages.github.com/">GitHub Pages</a>{% endif %}</p>
     </div>
   </footer>
 

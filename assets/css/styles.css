@@ -279,14 +279,13 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 
 .hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-/* ---------- Quote rotator (site footer) ---------- */
+/* ---------- Quote rotator (footer epigraph) ---------- */
 .quote-rotator {
   display: grid;
   /* 短句在「最长句子」预留的高度内垂直居中，避免文字贴顶、下方大片留白 */
   align-items: center;
-  text-align: center;
-  max-width: 620px;
-  margin: 0 auto 1.9rem;
+  text-align: left;
+  margin: 0 0 1.5rem;
 }
 
 .quote-item {
@@ -308,9 +307,8 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 }
 
 .quote-author {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
+  font-style: normal;
+  white-space: nowrap;
   color: var(--text-tertiary);
 }
 
@@ -649,22 +647,19 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 2.4rem 0 2.2rem;
-  text-align: center;
+  padding: 2.2rem 0 2.2rem;
   font-size: 0.85rem;
   color: var(--text-tertiary);
 }
 .site-footer a { color: var(--text-secondary); }
 .site-footer a:hover { color: var(--text); }
 
-/* 页脚小字：居中两行（版权 / 技术署名） */
-.footer-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-}
-.footer-copy, .footer-credits { margin: 0; }
+/* 页脚与正文同宽（正文 740px / 首页 940px），左右缘完全对齐 */
+.footer-inner { max-width: var(--reading); }
+.footer-inner.main-content-wide { max-width: 940px; }
+
+/* 小字右对齐，与左侧题词形成编辑排版式的对角关系 */
+.footer-copy { margin: 0; text-align: right; }
 
 /* 回到顶部按钮（滚动后出现） */
 .back-to-top {
