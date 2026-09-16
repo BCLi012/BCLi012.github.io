@@ -9,15 +9,13 @@
   label_zh: 邮箱
   url: "mailto:fairly_bc@whu.edu.cn"
 
-# TODO 把下面两条换成你的主页地址
 - label: 知乎
-  url: "https://www.zhihu.com/"
+  url: "https://www.zhihu.com/people/yun-jian-51-81"
 
 - label: 小红书
-  url: "https://www.xiaohongshu.com/"
+  url: "https://www.xiaohongshu.com/user/profile/62bae38d000000001b02bbff"
 
-# 其他平台示例：填好 url 后去掉注释即可启用
-# - label: 微博
-#   url: ""
-# - label: Bilibili
+# X 待补：你给的是 https://x.com/home（登录后的个人时间线，访客打开只会看到登录页），
+# 公开主页形如 https://x.com/你的用户名，拿到用户名后取消下面两行注释即可
+# - label: X
 #   url: ""
