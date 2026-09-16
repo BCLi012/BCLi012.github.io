@@ -1,0 +1,16 @@
+---
+layout: none
+permalink: /search.json
+---
+[
+{% assign items = site.pages | concat: site.posts | concat: site.projects | concat: site.research | concat: site.creative | concat: site.sports | concat: site.thoughts %}
+{% for item in items %}
+  {% if item.title and item.lang != 'zh' %}
+{
+  "title": {{ item.title | jsonify }},
+  "url": {{ item.url | absolute_url | jsonify }},
+  "summary": {{ item.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }}
+ }{% unless forloop.last %},{% endunless %}
+  {% endif %}
+{% endfor %}
+]

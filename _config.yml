@@ -1,0 +1,61 @@
+title: "Your Name"
+description: "Personal site · Projects · Research · Creative · Sports · Thoughts"
+url: "https://bcli012.github.io" # update
+baseurl: "" # keep empty for username.github.io
+markdown: kramdown
+permalink: pretty
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+  research:
+    output: true
+    permalink: /research/:name/
+  creative:
+    output: true
+    permalink: /creative/:name/
+  sports:
+    output: true
+    permalink: /sports/:name/
+  thoughts:
+    output: true
+    permalink: /thoughts/:name/
+
+# Defaults for collections
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: creative
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: sports
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: thoughts
+    values:
+      layout: default
+
+# Include the search index
+exclude:
+  - node_modules
+  - vendor
+
+# Build settings
+theme: minima
+plugins: []
