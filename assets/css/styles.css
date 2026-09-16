@@ -282,8 +282,11 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 /* ---------- Quote rotator (site footer) ---------- */
 .quote-rotator {
   display: grid;
+  /* 短句在「最长句子」预留的高度内垂直居中，避免文字贴顶、下方大片留白 */
+  align-items: center;
+  text-align: center;
   max-width: 620px;
-  margin: 0 auto 1.35rem;
+  margin: 0 auto 1.9rem;
 }
 
 .quote-item {
@@ -646,23 +649,20 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 2.2rem 0 1.8rem;
+  padding: 2.4rem 0 2.2rem;
+  text-align: center;
   font-size: 0.85rem;
   color: var(--text-tertiary);
 }
 .site-footer a { color: var(--text-secondary); }
 .site-footer a:hover { color: var(--text); }
 
-/* 页脚底部：左版权、右署名，窄屏居中堆叠 */
+/* 页脚小字：居中两行（版权 / 技术署名） */
 .footer-bottom {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem 1.5rem;
-  margin-top: 1.5rem;
-  padding-top: 1.15rem;
-  border-top: 1px solid var(--border);
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
 }
 .footer-copy, .footer-credits { margin: 0; }
 
@@ -709,8 +709,8 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
   .entry-table-date { display: block; width: auto; padding: 0 0 0.15rem; }
   .entry-table-body { display: block; padding: 0; }
 
-  /* 页脚在窄屏居中堆叠 */
-  .footer-bottom { justify-content: center; text-align: center; }
+  /* 页脚在窄屏保持居中；回到顶部按钮收紧 */
+  .footer-bottom { gap: 0.3rem; }
   .back-to-top { right: 1rem; bottom: 1rem; width: 2.4rem; height: 2.4rem; }
 }
 
