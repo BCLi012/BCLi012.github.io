@@ -8,7 +8,7 @@ permalink: /thoughts/
   <p>Essays and reflections on technology, work, and life.</p>
 </header>
 
-{% assign items = site.thoughts | sort: 'date' | reverse %}
+{% assign items = site.thoughts | where_exp: 'item', 'item.lang != "zh"' | sort: 'date' | reverse %}
 <ul class="entry-list">
   {% for item in items %}
   <li class="entry">

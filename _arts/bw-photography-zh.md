@@ -5,7 +5,7 @@ tags: [摄影, 作品集]
 summary: "一组黑白摄影作品与构图笔记。"
 cover: /assets/images/bw-series.jpg
 lang: zh
-permalink: /zh/creative/bw-photography/
+permalink: /zh/arts/bw-photography/
 ---
 
 画廊说明

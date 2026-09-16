@@ -8,7 +8,7 @@ permalink: /sports/
   <p>Climbing, hiking, and other outdoor adventures.</p>
 </header>
 
-{% assign items = site.sports | sort: 'date' | reverse %}
+{% assign items = site.sports | where_exp: 'item', 'item.lang != "zh"' | sort: 'date' | reverse %}
 <ul class="entry-list">
   {% for item in items %}
   <li class="entry">

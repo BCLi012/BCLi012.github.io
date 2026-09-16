@@ -1,14 +1,16 @@
 ---
 layout: default
-title: Projects
-permalink: /projects/
+title: 运动
+permalink: /zh/sports/
+lang: zh
+summary: "攀登、徒步与其他户外记录。"
 ---
 <header class="page-head">
-  <h1>Projects</h1>
-  <p>Selected work, side projects, and things I've built.</p>
+  <h1>运动</h1>
+  <p>攀登、徒步，以及各种户外记录。</p>
 </header>
 
-{% assign items = site.projects | where_exp: 'item', 'item.lang != "zh"' | sort: 'date' | reverse %}
+{% assign items = site.sports | where_exp: 'item', 'item.lang == "zh"' | sort: 'date' | reverse %}
 <ul class="entry-list">
   {% for item in items %}
   <li class="entry">
@@ -21,4 +23,4 @@ permalink: /projects/
   </li>
   {% endfor %}
 </ul>
-{% if items.size == 0 %}<p class="empty">Nothing here yet.</p>{% endif %}
+{% if items.size == 0 %}<p class="empty">这里还没有内容。</p>{% endif %}

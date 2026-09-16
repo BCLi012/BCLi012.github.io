@@ -1,14 +1,16 @@
 ---
 layout: default
-title: Creative
-permalink: /creative/
+title: 项目
+permalink: /zh/projects/
+lang: zh
+summary: "我做过和正在做的项目。"
 ---
 <header class="page-head">
-  <h1>Creative</h1>
-  <p>Photography, film notes, reviews, and other creative writing.</p>
+  <h1>项目</h1>
+  <p>作品、side project 与亲手做出来的东西。</p>
 </header>
 
-{% assign items = site.creative | sort: 'date' | reverse %}
+{% assign items = site.projects | where_exp: 'item', 'item.lang == "zh"' | sort: 'date' | reverse %}
 <ul class="entry-list">
   {% for item in items %}
   <li class="entry">
@@ -21,4 +23,4 @@ permalink: /creative/
   </li>
   {% endfor %}
 </ul>
-{% if items.size == 0 %}<p class="empty">Nothing here yet.</p>{% endif %}
+{% if items.size == 0 %}<p class="empty">这里还没有内容。</p>{% endif %}

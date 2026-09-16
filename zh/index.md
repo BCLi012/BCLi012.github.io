@@ -1,25 +1,26 @@
 ---
-title: Home
 layout: default
-lang: en
+title: 首页
+permalink: /zh/
+lang: zh
 ---
 <section class="hero">
-  <p class="hero-eyebrow">Personal Site</p>
+  <p class="hero-eyebrow">个人网站</p>
   <h1>{{ site.title }}</h1>
-  <p class="hero-tagline">{{ site.description }}</p>
+  <p class="hero-tagline">项目、研究、艺术与户外——这里是我的自留地。</p>
   <div class="hero-links">
-    <a class="button" href="{{ '/about/' | relative_url }}">About me</a>
-    <a class="button button-ghost" href="{{ '/projects/' | relative_url }}">View projects</a>
+    <a class="button" href="{{ '/zh/about/' | relative_url }}">关于我</a>
+    <a class="button button-ghost" href="{{ '/zh/projects/' | relative_url }}">看看项目</a>
   </div>
 </section>
 
 <section class="section">
   <div class="section-head">
-    <h2>Projects</h2>
-    <a class="see-all" href="{{ '/projects/' | relative_url }}">All →</a>
+    <h2>项目</h2>
+    <a class="see-all" href="{{ '/zh/projects/' | relative_url }}">全部 →</a>
   </div>
+  {% assign items = site.projects | where_exp: 'item', 'item.lang == "zh"' | sort: 'date' | reverse %}
   <ul class="card-list">
-    {% assign items = site.projects | where_exp: 'item', 'item.lang != "zh"' %}
     {% for p in items limit:3 %}
       <li class="card">
         <a href="{{ p.url | relative_url }}">
@@ -33,11 +34,11 @@ lang: en
 
 <section class="section">
   <div class="section-head">
-    <h2>Research</h2>
-    <a class="see-all" href="{{ '/research/' | relative_url }}">All →</a>
+    <h2>研究</h2>
+    <a class="see-all" href="{{ '/zh/research/' | relative_url }}">全部 →</a>
   </div>
+  {% assign items = site.research | where_exp: 'item', 'item.lang == "zh"' | sort: 'date' | reverse %}
   <ul class="card-list">
-    {% assign items = site.research | where_exp: 'item', 'item.lang != "zh"' %}
     {% for r in items limit:2 %}
       <li class="card">
         <a href="{{ r.url | relative_url }}">
@@ -51,12 +52,12 @@ lang: en
 
 <section class="section">
   <div class="section-head">
-    <h2>From the Journal</h2>
-    <a class="see-all" href="{{ '/thoughts/' | relative_url }}">All →</a>
+    <h2>随笔</h2>
+    <a class="see-all" href="{{ '/zh/thoughts/' | relative_url }}">全部 →</a>
   </div>
+  {% assign items = site.thoughts | where_exp: 'item', 'item.lang == "zh"' | sort: 'date' | reverse %}
   <ul class="journal-list">
-    {% assign thoughts = site.thoughts | where_exp: 'item', 'item.lang != "zh"' | sort: 'date' | reverse %}
-    {% for t in thoughts limit:4 %}
+    {% for t in items limit:4 %}
       <li>
         <a href="{{ t.url | relative_url }}">{{ t.title }}</a>
         <time datetime="{{ t.date | date_to_xmlschema }}">{{ t.date | date: "%Y-%m-%d" }}</time>

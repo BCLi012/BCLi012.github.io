@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Projects
-permalink: /projects/
+title: Arts
+permalink: /arts/
 ---
 <header class="page-head">
-  <h1>Projects</h1>
-  <p>Selected work, side projects, and things I've built.</p>
+  <h1>Arts</h1>
+  <p>Photography, film notes, reviews, and other artistic pursuits.</p>
 </header>
 
-{% assign items = site.projects | where_exp: 'item', 'item.lang != "zh"' | sort: 'date' | reverse %}
+{% assign items = site.arts | where_exp: 'item', 'item.lang != "zh"' | sort: 'date' | reverse %}
 <ul class="entry-list">
   {% for item in items %}
   <li class="entry">

@@ -124,7 +124,18 @@ h1, h2, h3, h4 {
 .site-nav a:hover { color: var(--text); background: var(--bg-code); }
 .site-nav a.active { color: var(--accent); font-weight: 600; }
 
-.header-actions { display: flex; align-items: center; }
+.header-actions { display: flex; align-items: center; gap: 0.35rem; }
+
+.lang-switch {
+  padding: 0.28rem 0.7rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+.lang-switch:hover { color: var(--accent); border-color: var(--accent); background: var(--bg-code); }
 
 #theme-toggle {
   display: grid;

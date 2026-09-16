@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{% if page.title and page.url != '/' %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <title>{% if page.title and page.url != '/' and page.url != '/zh/' %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ page.summary | default: page.excerpt | strip_html | strip_newlines | default: site.description }}" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="{{ page.title | default: site.title }}" />
@@ -21,20 +21,50 @@
   <script defer src="{{ '/assets/vendor/simple-jekyll-search.min.js' | relative_url }}"></script>
 </head>
 <body>
+  {% if page.lang == 'zh' %}
+    {% assign nav_home = '首页' %}
+    {% assign nav_projects = '项目' %}
+    {% assign nav_research = '研究' %}
+    {% assign nav_arts = '艺术' %}
+    {% assign nav_sports = '运动' %}
+    {% assign nav_thoughts = '随笔' %}
+    {% assign nav_about = '关于' %}
+    {% assign nav_contact = '联系' %}
+    {% assign search_placeholder = '搜索站内内容…' %}
+    {% assign lang_alt = page.url | replace_first: '/zh', '' %}
+    {% if lang_alt == '' %}{% assign lang_alt = '/' %}{% endif %}
+    {% assign lang_label = 'EN' %}
+    {% assign lang_title = 'Switch to English' %}
+  {% else %}
+    {% assign nav_home = 'Home' %}
+    {% assign nav_projects = 'Projects' %}
+    {% assign nav_research = 'Research' %}
+    {% assign nav_arts = 'Arts' %}
+    {% assign nav_sports = 'Sports' %}
+    {% assign nav_thoughts = 'Thoughts' %}
+    {% assign nav_about = 'About' %}
+    {% assign nav_contact = 'Contact' %}
+    {% assign search_placeholder = 'Search…' %}
+    {% assign lang_alt = '/zh' | append: page.url %}
+    {% assign lang_label = '中文' %}
+    {% assign lang_title = '切换到中文' %}
+  {% endif %}
+
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav">
-        <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a>
-        <a href="{{ '/projects/' | relative_url }}" {% if page.url contains '/projects' %}class="active"{% endif %}>Projects</a>
-        <a href="{{ '/research/' | relative_url }}" {% if page.url contains '/research' %}class="active"{% endif %}>Research</a>
-        <a href="{{ '/creative/' | relative_url }}" {% if page.url contains '/creative' %}class="active"{% endif %}>Creative</a>
-        <a href="{{ '/sports/' | relative_url }}" {% if page.url contains '/sports' %}class="active"{% endif %}>Sports</a>
-        <a href="{{ '/thoughts/' | relative_url }}" {% if page.url contains '/thoughts' %}class="active"{% endif %}>Thoughts</a>
-        <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>About</a>
-        <a href="{{ '/contact/' | relative_url }}" {% if page.url contains '/contact' %}class="active"{% endif %}>Contact</a>
+        <a href="{{ '/' | relative_url }}" {% if page.url == '/' or page.url == '/zh/' %}class="active"{% endif %}>{{ nav_home }}</a>
+        <a href="{{ '/projects/' | relative_url }}" {% if page.url contains '/projects' %}class="active"{% endif %}>{{ nav_projects }}</a>
+        <a href="{{ '/research/' | relative_url }}" {% if page.url contains '/research' %}class="active"{% endif %}>{{ nav_research }}</a>
+        <a href="{{ '/arts/' | relative_url }}" {% if page.url contains '/arts' %}class="active"{% endif %}>{{ nav_arts }}</a>
+        <a href="{{ '/sports/' | relative_url }}" {% if page.url contains '/sports' %}class="active"{% endif %}>{{ nav_sports }}</a>
+        <a href="{{ '/thoughts/' | relative_url }}" {% if page.url contains '/thoughts' %}class="active"{% endif %}>{{ nav_thoughts }}</a>
+        <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>{{ nav_about }}</a>
+        <a href="{{ '/contact/' | relative_url }}" {% if page.url contains '/contact' %}class="active"{% endif %}>{{ nav_contact }}</a>
       </nav>
       <div class="header-actions">
+        <a class="lang-switch" href="{{ lang_alt | relative_url }}" title="{{ lang_title }}">{{ lang_label }}</a>
         <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -42,7 +72,7 @@
       </div>
     </div>
     <div class="wrap search-row">
-      <input type="search" id="search-input" placeholder="Search…" aria-label="Search the site" />
+      <input type="search" id="search-input" placeholder="{{ search_placeholder }}" aria-label="Search the site" />
       <div id="search-results"></div>
     </div>
   </header>
@@ -78,7 +108,7 @@
           resultsContainer: document.getElementById('search-results'),
           json: '{{ "/search.json" | relative_url }}',
           searchResultTemplate: '<article class="search-item"><a href="{url}"><h4>{title}</h4></a><p>{summary}</p></article>',
-          noResultsText: '<p class="search-item">No results</p>',
+          noResultsText: '<p class="search-item">{% if page.lang == 'zh' %}没有结果{% else %}No results{% endif %}</p>',
           limit: 10,
           fuzzy: false
         });

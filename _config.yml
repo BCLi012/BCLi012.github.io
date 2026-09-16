@@ -1,5 +1,5 @@
 title: "Bruce"
-description: "Personal site — projects, research, creative writing, and outdoor adventures."
+description: "Personal site — projects, research, arts, and outdoor adventures."
 url: "https://bclee012.github.io" # update
 baseurl: "" # keep empty for username.github.io
 markdown: kramdown
@@ -13,9 +13,9 @@ collections:
   research:
     output: true
     permalink: /research/:name/
-  creative:
+  arts:
     output: true
-    permalink: /creative/:name/
+    permalink: /arts/:name/
   sports:
     output: true
     permalink: /sports/:name/
@@ -37,7 +37,7 @@ defaults:
       layout: post
   - scope:
       path: ""
-      type: creative
+      type: arts
     values:
       layout: post
   - scope:

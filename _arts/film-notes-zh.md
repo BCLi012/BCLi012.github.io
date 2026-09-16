@@ -4,7 +4,7 @@ date: 2025-03-20
 tags: [电影, 影评, 笔记]
 summary: "对示例电影的个人笔记与解读。"
 lang: zh
-permalink: /zh/creative/film-notes/
+permalink: /zh/arts/film-notes/
 ---
 
 关于示例电影的短评：主题、摄影语言与情感节奏。讨论导演如何通过静默与构图传达角色的内心世界。

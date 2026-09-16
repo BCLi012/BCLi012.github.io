@@ -8,7 +8,7 @@ permalink: /research/
   <p>Papers, notes, and ongoing research interests.</p>
 </header>
 
-{% assign items = site.research | sort: 'date' | reverse %}
+{% assign items = site.research | where_exp: 'item', 'item.lang != "zh"' | sort: 'date' | reverse %}
 <ul class="entry-list">
   {% for item in items %}
   <li class="entry">
