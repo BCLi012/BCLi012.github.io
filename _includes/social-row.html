@@ -1,4 +1,7 @@
-{% comment %}首页底部社交链接，数据见 _data/socials.yml（url 留空则不显示）{% endcomment %}
+{% comment %}
+  社交图标按钮，数据见 _data/socials.yml，图标路径见 _data/social_icons.yml
+  url 留空的条目自动不显示；图标缺失时回退为文字。
+{% endcomment %}
 <div class="social-row">
-  {% for s in site.data.socials %}{% if s.url and s.url != '' %}<a class="social-link" href="{{ s.url }}" target="_blank" rel="noopener">{% if page.lang == 'zh' and s.label_zh %}{{ s.label_zh }}{% else %}{{ s.label }}{% endif %}</a>{% endif %}{% endfor %}
+  {% for s in site.data.socials %}{% if s.url and s.url != '' %}{% assign s_label = s.label %}{% if page.lang == 'zh' and s.label_zh %}{% assign s_label = s.label_zh %}{% endif %}{% assign icon_path = site.data.social_icons[s.icon] %}<a class="social-link" href="{{ s.url }}"{% unless s.url contains 'mailto:' %} target="_blank" rel="noopener"{% endunless %} aria-label="{{ s_label }}" title="{{ s_label }}">{% if icon_path %}<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="{{ icon_path }}"/></svg>{% else %}<span class="social-link-text">{{ s_label }}</span>{% endif %}</a>{% endif %}{% endfor %}
 </div>

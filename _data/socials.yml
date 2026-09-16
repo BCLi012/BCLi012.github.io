@@ -1,21 +1,26 @@
 # ============================================================
-# 首页底部社交链接（显示在名言轮播之上）
-# url 留空则该条不显示；label_zh 可选，用于中文页面显示不同名称
+# 社交链接（显示在 Contact 页与 About 页，图标按钮形式）
+# url 留空则该条不显示；label_zh 可选，用于中文页面的无障碍名称
+# icon 对应 _data/social_icons.yml 里的键名
 # ============================================================
 - label: GitHub
+  icon: github
   url: "https://github.com/BcLee012"
 
 - label: Email
   label_zh: 邮箱
+  icon: mail
   url: "mailto:fairly_bc@whu.edu.cn"
 
 - label: 知乎
+  icon: zhihu
   url: "https://www.zhihu.com/people/yun-jian-51-81"
 
 - label: 小红书
+  icon: xiaohongshu
   url: "https://www.xiaohongshu.com/user/profile/62bae38d000000001b02bbff"
 
-# X 待补：你给的是 https://x.com/home（登录后的个人时间线，访客打开只会看到登录页），
-# 公开主页形如 https://x.com/你的用户名，拿到用户名后取消下面两行注释即可
+# X：拿到公开主页地址（形如 https://x.com/用户名）后取消注释即可启用
 # - label: X
+#   icon: x
 #   url: ""

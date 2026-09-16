@@ -45,10 +45,3 @@ lang: zh
   </div>
   {% include entry-table.html items=site.projects lang='zh' limit=3 %}
 </section>
-
-<section class="section">
-  <div class="section-head">
-    <h2>在其他地方</h2>
-  </div>
-  {% include social-row.html %}
-</section>

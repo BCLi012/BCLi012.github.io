@@ -612,22 +612,33 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
   color: var(--text-secondary);
 }
 
-/* ---------- Social row (homepage) ---------- */
+/* ---------- Social icon buttons ---------- */
 .social-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.75rem;
+  gap: 0.7rem;
+  margin: 1.25rem 0 0;
 }
 
-.prose .social-link {
+.prose a.social-link {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
   color: var(--text-secondary);
-  font-size: 0.95rem;
   text-decoration: none;
-  border-bottom: 1px solid var(--border-strong);
-  padding-bottom: 1px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
-.prose .social-link:hover { color: var(--text); border-color: var(--text); }
+.prose a.social-link:hover {
+  color: var(--text);
+  border-color: var(--text);
+  background: var(--bg-code);
+  transform: translateY(-1px);
+}
+.social-link svg { width: 1.15rem; height: 1.15rem; }
+.social-link-text { font-size: 0.85rem; padding: 0 0.5rem; }
 
 /* ==========================================================================
    Footer

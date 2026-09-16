@@ -5,10 +5,10 @@ lang: zh
 summary: "联系方式。"
 permalink: /zh/contact/
 ---
-欢迎通过以下方式联系我：
+联系我最好的方式是邮箱：[fairly_bc@whu.edu.cn](mailto:fairly_bc@whu.edu.cn)
 
-邮箱：[fairly_bc@whu.edu.cn](mailto:fairly_bc@whu.edu.cn)
+在其他地方：
 
-也可以在 GitHub 上找我：[@BcLee012](https://github.com/BcLee012)
+{% include social-row.html %}
 
 English version is [here](/contact/).

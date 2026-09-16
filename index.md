@@ -44,10 +44,3 @@ lang: en
   </div>
   {% include entry-table.html items=site.projects lang='en' limit=3 %}
 </section>
-
-<section class="section">
-  <div class="section-head">
-    <h2>Elsewhere</h2>
-  </div>
-  {% include social-row.html %}
-</section>
