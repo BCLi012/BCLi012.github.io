@@ -59,11 +59,19 @@ defaults:
     values:
       layout: post
 
-# Include the search index
+# 不发布到线上站点的文件
+# 仓库文档（README 等）留在仓库里即可，无需作为静态文件复制进站点；
+# 另外 GitHub Pages 的默认插件会让无 front matter 的 Markdown 被发现，
+# 显式排除更稳妥。
 exclude:
+  - README.md
+  - MAINTENANCE.md
+  - ARCHITECTURE.md
   - node_modules
   - vendor
 
-# Build settings
-theme: minima
+# 构建设置
+# 不使用主题：全站布局都在 _layouts/ 内，所有页面均显式声明 layout。
+# 此前保留着 starter 模板遗留的 theme: minima，实际无人引用，
+# 却会让无布局的文件被套上外部主题样式，并拖慢构建。
 plugins: []
