@@ -4,15 +4,15 @@ permalink: /sitemap.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- assign docs = site.pages | concat: site.research | concat: site.projects | concat: site.arts | concat: site.sports | concat: site.thoughts -%}
-{%- for d in docs -%}
-{%- unless d.url contains 'search-' or d.url contains 'sitemap' or d.url contains '404' or d.url contains '.json' -%}
+{%- assign docs = site.pages | concat: site.research | concat: site.projects | concat: site.arts | concat: site.sports | concat: site.thoughts %}
+{%- for d in docs %}
+{%- unless d.url contains 'search-' or d.url contains 'sitemap' or d.url contains '404' or d.url contains '.json' %}
   <url>
     <loc>{{ d.url | absolute_url | xml_escape }}</loc>
 {%- if d.date %}
     <lastmod>{{ d.date | date_to_xmlschema }}</lastmod>
 {%- endif %}
   </url>
-{%- endunless -%}
+{%- endunless %}
 {%- endfor %}
 </urlset>
