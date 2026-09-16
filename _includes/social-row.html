@@ -1,0 +1,4 @@
+{% comment %}首页底部社交链接，数据见 _data/socials.yml（url 留空则不显示）{% endcomment %}
+<div class="social-row">
+  {% for s in site.data.socials %}{% if s.url and s.url != '' %}<a class="social-link" href="{{ s.url }}" target="_blank" rel="noopener">{% if page.lang == 'zh' and s.label_zh %}{{ s.label_zh }}{% else %}{{ s.label }}{% endif %}</a>{% endif %}{% endfor %}
+</div>

@@ -1,0 +1,14 @@
+{% comment %}首页 Education 区块，数据见 _data/education.yml{% endcomment %}
+{% assign edu = site.data.education %}
+{% if edu.size > 0 %}
+<table class="entry-table">
+  <tbody>
+    {% for item in edu %}
+    <tr>
+      <th class="entry-table-date" scope="row">{{ item.period }}</th>
+      <td class="entry-table-body">{% if page.lang == 'zh' %}{{ item.zh | default: item.en }}{% if item.detail_zh %}<span class="entry-table-summary">{{ item.detail_zh }}</span>{% elsif item.detail_en %}<span class="entry-table-summary">{{ item.detail_en }}</span>{% endif %}{% else %}{{ item.en }}{% if item.detail_en %}<span class="entry-table-summary">{{ item.detail_en }}</span>{% endif %}{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}

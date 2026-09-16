@@ -39,13 +39,13 @@
     {% assign lang_title = 'Switch to English' %}
   {% else %}
     {% assign base = '' %}
-    {% assign nav_home = 'home' %}
-    {% assign nav_projects = 'projects' %}
-    {% assign nav_research = 'research' %}
-    {% assign nav_arts = 'arts' %}
-    {% assign nav_sports = 'sports' %}
-    {% assign nav_thoughts = 'thoughts' %}
-    {% assign nav_contact = 'contact' %}
+    {% assign nav_home = 'Home' %}
+    {% assign nav_projects = 'Projects' %}
+    {% assign nav_research = 'Research' %}
+    {% assign nav_arts = 'Arts' %}
+    {% assign nav_sports = 'Sports' %}
+    {% assign nav_thoughts = 'Thoughts' %}
+    {% assign nav_contact = 'Contact' %}
     {% assign search_placeholder = 'Search…' %}
     {% assign search_json = '/search-en.json' %}
     {% assign lang_alt = '/zh' | append: page.url %}
@@ -55,7 +55,6 @@
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="site-title" href="{{ base | append: '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav">
         <a href="{{ base | append: '/' | relative_url }}" {% if page.url == '/' or page.url == '/zh/' %}class="active"{% endif %}>{{ nav_home }}</a>
         <a href="{{ base | append: '/projects/' | relative_url }}" {% if page.url contains '/projects' %}class="active"{% endif %}>{{ nav_projects }}</a>
