@@ -36,7 +36,7 @@ lang: zh
   <div class="section-head">
     <h2>动态</h2>
   </div>
-  {% include entry-table.html items=site.news lang='zh' limit=4 %}
+  {% include entry-table.html items=site.news lang='zh' limit=4 explicit_link=true %}
 </section>
 
 <section class="section">

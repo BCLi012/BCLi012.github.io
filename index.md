@@ -35,7 +35,7 @@ lang: en
   <div class="section-head">
     <h2>news</h2>
   </div>
-  {% include entry-table.html items=site.news lang='en' limit=4 %}
+  {% include entry-table.html items=site.news lang='en' limit=4 explicit_link=true %}
 </section>
 
 <section class="section">
