@@ -22,6 +22,7 @@
 </head>
 <body>
   {% if page.lang == 'zh' %}
+    {% assign base = '/zh' %}
     {% assign nav_home = '首页' %}
     {% assign nav_projects = '项目' %}
     {% assign nav_research = '研究' %}
@@ -31,11 +32,13 @@
     {% assign nav_about = '关于' %}
     {% assign nav_contact = '联系' %}
     {% assign search_placeholder = '搜索站内内容…' %}
+    {% assign search_json = '/search-zh.json' %}
     {% assign lang_alt = page.url | replace_first: '/zh', '' %}
     {% if lang_alt == '' %}{% assign lang_alt = '/' %}{% endif %}
     {% assign lang_label = 'EN' %}
     {% assign lang_title = 'Switch to English' %}
   {% else %}
+    {% assign base = '' %}
     {% assign nav_home = 'Home' %}
     {% assign nav_projects = 'Projects' %}
     {% assign nav_research = 'Research' %}
@@ -45,6 +48,7 @@
     {% assign nav_about = 'About' %}
     {% assign nav_contact = 'Contact' %}
     {% assign search_placeholder = 'Search…' %}
+    {% assign search_json = '/search-en.json' %}
     {% assign lang_alt = '/zh' | append: page.url %}
     {% assign lang_label = '中文' %}
     {% assign lang_title = '切换到中文' %}
@@ -52,16 +56,16 @@
 
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <a class="site-title" href="{{ base | append: '/' | relative_url }}">{{ site.title }}</a>
       <nav class="site-nav">
-        <a href="{{ '/' | relative_url }}" {% if page.url == '/' or page.url == '/zh/' %}class="active"{% endif %}>{{ nav_home }}</a>
-        <a href="{{ '/projects/' | relative_url }}" {% if page.url contains '/projects' %}class="active"{% endif %}>{{ nav_projects }}</a>
-        <a href="{{ '/research/' | relative_url }}" {% if page.url contains '/research' %}class="active"{% endif %}>{{ nav_research }}</a>
-        <a href="{{ '/arts/' | relative_url }}" {% if page.url contains '/arts' %}class="active"{% endif %}>{{ nav_arts }}</a>
-        <a href="{{ '/sports/' | relative_url }}" {% if page.url contains '/sports' %}class="active"{% endif %}>{{ nav_sports }}</a>
-        <a href="{{ '/thoughts/' | relative_url }}" {% if page.url contains '/thoughts' %}class="active"{% endif %}>{{ nav_thoughts }}</a>
-        <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>{{ nav_about }}</a>
-        <a href="{{ '/contact/' | relative_url }}" {% if page.url contains '/contact' %}class="active"{% endif %}>{{ nav_contact }}</a>
+        <a href="{{ base | append: '/' | relative_url }}" {% if page.url == '/' or page.url == '/zh/' %}class="active"{% endif %}>{{ nav_home }}</a>
+        <a href="{{ base | append: '/projects/' | relative_url }}" {% if page.url contains '/projects' %}class="active"{% endif %}>{{ nav_projects }}</a>
+        <a href="{{ base | append: '/research/' | relative_url }}" {% if page.url contains '/research' %}class="active"{% endif %}>{{ nav_research }}</a>
+        <a href="{{ base | append: '/arts/' | relative_url }}" {% if page.url contains '/arts' %}class="active"{% endif %}>{{ nav_arts }}</a>
+        <a href="{{ base | append: '/sports/' | relative_url }}" {% if page.url contains '/sports' %}class="active"{% endif %}>{{ nav_sports }}</a>
+        <a href="{{ base | append: '/thoughts/' | relative_url }}" {% if page.url contains '/thoughts' %}class="active"{% endif %}>{{ nav_thoughts }}</a>
+        <a href="{{ base | append: '/about/' | relative_url }}" {% if page.url contains '/about' %}class="active"{% endif %}>{{ nav_about }}</a>
+        <a href="{{ base | append: '/contact/' | relative_url }}" {% if page.url contains '/contact' %}class="active"{% endif %}>{{ nav_contact }}</a>
       </nav>
       <div class="header-actions">
         <a class="lang-switch" href="{{ lang_alt | relative_url }}" title="{{ lang_title }}">{{ lang_label }}</a>
@@ -106,7 +110,7 @@
         simpleJekyllSearch({
           searchInput: document.getElementById('search-input'),
           resultsContainer: document.getElementById('search-results'),
-          json: '{{ "/search.json" | relative_url }}',
+          json: '{{ search_json | relative_url }}',
           searchResultTemplate: '<article class="search-item"><a href="{url}"><h4>{title}</h4></a><p>{summary}</p></article>',
           noResultsText: '<p class="search-item">{% if page.lang == 'zh' %}没有结果{% else %}No results{% endif %}</p>',
           limit: 10,

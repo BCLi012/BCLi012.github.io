@@ -1,0 +1,18 @@
+---
+layout: none
+permalink: /search-zh.json
+---
+[
+{% assign items = site.pages | concat: site.posts | concat: site.projects | concat: site.research | concat: site.arts | concat: site.sports | concat: site.thoughts %}
+{% assign first = true %}
+{% for item in items %}
+  {% if item.title and item.lang == 'zh' %}
+{% unless first %},{% endunless %}{% assign first = false %}
+{
+  "title": {{ item.title | jsonify }},
+  "url": {{ item.url | absolute_url | jsonify }},
+  "summary": {{ item.summary | default: item.excerpt | strip_html | strip_newlines | truncate: 160 | jsonify }}
+ }
+  {% endif %}
+{% endfor %}
+]
