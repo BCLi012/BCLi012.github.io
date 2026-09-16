@@ -157,9 +157,9 @@
       var searchReady = false;
 
       var initSearch = function () {
-        if (searchReady || !searchInput || !window.simpleJekyllSearch) return;
+        if (searchReady || !searchInput || typeof window.SimpleJekyllSearch !== 'function') return;
         searchReady = true;
-        simpleJekyllSearch({
+        window.SimpleJekyllSearch({
           searchInput: searchInput,
           resultsContainer: document.getElementById('search-results'),
           json: '{{ search_json | relative_url }}',
