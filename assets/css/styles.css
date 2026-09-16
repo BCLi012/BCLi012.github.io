@@ -559,7 +559,8 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 .profile-photo img {
   display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  /* 竖版人像比例，与原图一致，避免裁切；换图后如需方形改回 1 / 1 并调 object-position */
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   border: 1px solid var(--border);
   border-radius: var(--radius);
