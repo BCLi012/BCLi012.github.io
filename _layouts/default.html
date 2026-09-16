@@ -87,7 +87,7 @@
     </div>
   </header>
 
-  <main class="wrap main-content prose">
+  <main class="wrap main-content prose{% if page.url == '/' or page.url == '/zh/' %} main-content-wide{% endif %}">
     {{ content }}
   </main>
 
