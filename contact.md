@@ -9,6 +9,6 @@ The best way to reach me is email: [fairly_bc@whu.edu.cn](mailto:fairly_bc@whu.e
 
 Elsewhere:
 
-{% include social-row.html %}
+{% include link-buttons.html %}
 
 中文版请见[这里](/zh/contact/)。

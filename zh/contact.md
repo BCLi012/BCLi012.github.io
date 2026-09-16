@@ -9,6 +9,6 @@ permalink: /zh/contact/
 
 在其他地方：
 
-{% include social-row.html %}
+{% include link-buttons.html %}
 
 English version is [here](/contact/).

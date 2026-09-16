@@ -612,15 +612,16 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
   color: var(--text-secondary);
 }
 
-/* ---------- Social icon buttons ---------- */
-.social-row {
+/* ---------- Link icon buttons ----------
+   类名刻意不含 social/share/icon，避免被广告拦截规则误隐藏 */
+.link-row {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
   margin: 1.25rem 0 0;
 }
 
-.prose a.social-link {
+.prose a.link-btn {
   display: grid;
   place-items: center;
   width: 2.75rem;
@@ -631,14 +632,14 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
   text-decoration: none;
   transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
 }
-.prose a.social-link:hover {
+.prose a.link-btn:hover {
   color: var(--text);
   border-color: var(--text);
   background: var(--bg-code);
   transform: translateY(-1px);
 }
-.social-link svg { width: 1.15rem; height: 1.15rem; }
-.social-link-text { font-size: 0.85rem; padding: 0 0.5rem; }
+.link-btn svg { width: 1.15rem; height: 1.15rem; }
+.link-btn-text { font-size: 0.85rem; padding: 0 0.5rem; }
 
 /* ==========================================================================
    Footer

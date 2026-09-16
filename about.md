@@ -22,6 +22,6 @@ notes on one side, essays and records of the outdoors on the other.
 
 ## Elsewhere
 
-{% include social-row.html %}
+{% include link-buttons.html %}
 
 中文版请见[这里](/zh/about/)。
