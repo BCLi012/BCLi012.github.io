@@ -20,6 +20,6 @@ permalink: /zh/about/
 
 ## 在其他地方
 
-- GitHub：[@BcLee012](https://github.com/BcLee012)
+{% include social-row.html %}
 
 English version is [here](/about/).

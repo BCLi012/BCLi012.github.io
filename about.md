@@ -22,6 +22,6 @@ notes on one side, essays and records of the outdoors on the other.
 
 ## Elsewhere
 
-- GitHub: [@BcLee012](https://github.com/BcLee012)
+{% include social-row.html %}
 
 中文版请见[这里](/zh/about/)。
