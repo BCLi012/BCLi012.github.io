@@ -11,4 +11,4 @@ permalink: /zh/contact/
 
 也可以在 GitHub 上找我：[@BcLee012](https://github.com/BcLee012)
 
-English version is [here](/contact/)。
+English version is [here](/contact/).
