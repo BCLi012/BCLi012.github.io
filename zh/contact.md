@@ -5,7 +5,7 @@ lang: zh
 summary: "联系方式。"
 permalink: /zh/contact/
 ---
-联系我最好的方式是邮箱：[fairly_bc@whu.edu.cn](mailto:fairly_bc@whu.edu.cn)
+联系我最好的方式是邮箱：fairly_bc AT 163.com
 
 在其他地方：
 

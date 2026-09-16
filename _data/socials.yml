@@ -23,7 +23,9 @@
   icon: xiaohongshu
   url: "https://www.xiaohongshu.com/user/profile/62bae38d000000001b02bbff"
 
+# 邮箱不写 mailto（会在 href 里暴露真实地址，反爬无效），改为指向联系页
 - label: Email
   label_zh: 邮箱
   icon: mail
-  url: "mailto:fairly_bc@whu.edu.cn"
+  url: "/contact/"
+  url_zh: "/zh/contact/"

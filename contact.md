@@ -5,7 +5,7 @@ lang: en
 summary: "How to reach me."
 permalink: /contact/
 ---
-The best way to reach me is email: [fairly_bc@whu.edu.cn](mailto:fairly_bc@whu.edu.cn)
+The best way to reach me is email: fairly_bc AT 163.com
 
 Elsewhere:
 
