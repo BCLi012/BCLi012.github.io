@@ -5,7 +5,7 @@ lang: en
 summary: "About me and this site."
 permalink: /about/
 ---
-I'm **Bruce**. The name comes from two people I keep returning to: **Bruce Lee**,
+I'm **Bruce Li (Bingcheng Li)**. The name Bruce comes from two people I keep returning to: **Bruce Lee**,
 whose "be water" is less a slogan than a working method, and **Bruce Liang (梁博)**,
 whose patience with a single song is a reminder that depth beats breadth.
 

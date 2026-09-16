@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#faf9f8" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)" />
-  <title>{% if page.title and page.url != '/' and page.url != '/zh/' %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{{ page.summary | default: page.excerpt | strip_html | strip_newlines | default: site.description }}" />
+  <title>{% if page.title and page.url != '/' and page.url != '/zh/' %}{{ page.title }} · {{ site_name }}{% else %}{{ site_name }}{% endif %}</title>
+  <meta name="description" content="{{ page.summary | default: page.excerpt | strip_html | strip_newlines | default: site_desc }}" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ page.title | default: site.title }}" />
-  <meta property="og:description" content="{{ page.summary | default: site.description }}" />
+  <meta property="og:title" content="{{ page.title | default: site_name }}" />
+  <meta property="og:description" content="{{ page.summary | default: site_desc }}" />
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}" />
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.time | date: '%s' }}" />
   <script>
@@ -26,6 +26,8 @@
   <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
   {% if page.lang == 'zh' %}
     {% assign base = '/zh' %}
+    {% assign site_name = site.title_zh %}
+    {% assign site_desc = site.description_zh %}
     {% assign nav_home = '首页' %}
     {% assign nav_projects = '项目' %}
     {% assign nav_research = '研究' %}
@@ -41,6 +43,8 @@
     {% assign lang_title = 'Switch to English' %}
   {% else %}
     {% assign base = '' %}
+    {% assign site_name = site.title %}
+    {% assign site_desc = site.description %}
     {% assign nav_home = 'Home' %}
     {% assign nav_projects = 'Projects' %}
     {% assign nav_research = 'Research' %}
@@ -92,7 +96,7 @@
   <footer class="site-footer">
     <div class="wrap">
       {% include quote-rotator.html %}
-      <small class="site-footer-note">© {{ site.title }} · {{ "now" | date: "%Y" }} · <a href="{{ base | append: '/about/' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a> · Built with <a href="https://jekyllrb.com/">Jekyll</a></small>
+      <small class="site-footer-note">© {{ site_name }} · {{ "now" | date: "%Y" }} · <a href="{{ base | append: '/about/' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a> · Built with <a href="https://jekyllrb.com/">Jekyll</a></small>
     </div>
   </footer>
 
