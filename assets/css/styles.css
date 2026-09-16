@@ -448,7 +448,23 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
 }
 .prose a:hover { color: var(--accent-strong); text-decoration-color: currentColor; }
 
-/* 正文下划线不适用于界面元素 */
+/* 正文链接样式不得泄漏到界面组件上
+   （.prose a 的 color:inherit / 下划线优先级高于组件类，会盖掉按钮等自身配色） */
+.prose .button,
+.prose .button:hover { color: var(--on-accent); }
+
+.prose .button-ghost,
+.prose .button-ghost:hover { color: var(--accent); }
+
+.prose .entry-title { color: var(--text); }
+.prose .entry-title:hover { color: var(--accent); }
+
+.prose .see-all { color: var(--accent); }
+.prose .see-all:hover { color: var(--accent-strong); }
+
+.prose .journal-list a { color: var(--text); }
+.prose .journal-list a:hover { color: var(--accent); }
+
 .prose .button,
 .prose .entry-title,
 .prose .see-all,
