@@ -5,6 +5,10 @@
 - label: GitHub
   url: "https://github.com/BcLee012"
 
+- label: Email
+  label_zh: 邮箱
+  url: "mailto:fairly_bc@whu.edu.cn"
+
 # TODO 把下面两条换成你的主页地址
 - label: 知乎
   url: "https://www.zhihu.com/"
@@ -17,6 +21,3 @@
 #   url: ""
 # - label: Bilibili
 #   url: ""
-# - label: Email
-#   label_zh: 邮箱
-#   url: "mailto:you@example.com"

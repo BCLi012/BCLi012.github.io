@@ -7,7 +7,7 @@ permalink: /contact/
 ---
 The best ways to reach me:
 
-Email: your.email@example.com
+Email: [fairly_bc@whu.edu.cn](mailto:fairly_bc@whu.edu.cn)
 
 Or find me on GitHub: [@BcLee012](https://github.com/BcLee012)
 

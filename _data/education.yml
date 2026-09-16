@@ -1,20 +1,13 @@
 # ============================================================
 # 首页 Education 区块
-# ⚠️ 当前是占位内容，请替换成你的真实学历
-#
 # 字段说明：
-#   period      左列显示的年份区间
-#   en / zh     主行文字（按页面语言显示）
-#   detail_en / detail_zh   可选，副行灰色小字（如学校、地点）
+#   period / period_zh   左列年份区间（按页面语言显示）
+#   en / zh              主行文字
+#   detail_en / detail_zh 可选，副行灰色小字
 # ============================================================
-- period: "2023 — 2025"
-  en: "M.S. in Your Field"
-  zh: "硕士 · 你的专业"
-  detail_en: "Your University"
-  detail_zh: "你的学校"
-
-- period: "2019 — 2023"
-  en: "B.S. in Your Field"
-  zh: "本科 · 你的专业"
-  detail_en: "Your University"
-  detail_zh: "你的学校"
+- period: "2022 — present"
+  period_zh: "2022 — 至今"
+  en: "Logistics Management — Supply Chain Operations Experimental Class"
+  zh: "物流管理（供应链运营试验班）"
+  detail_en: "Wuhan University, School of Economics and Management · GPA 3.87/4 · Top 10% (3/30)"
+  detail_zh: "武汉大学 经济与管理学院 · GPA 3.87/4 · 专业前 10%（3/30）"

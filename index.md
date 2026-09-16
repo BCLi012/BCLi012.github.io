@@ -7,7 +7,7 @@ lang: en
   <h1 class="profile-name">{{ site.title }}</h1>
   <div class="profile-body">
     <div class="profile-bio">
-      <p>{{ site.description }}</p>
+      <p>I study supply chain operations at Wuhan University's School of Economics and Management — platform pricing, capacity allocation, and information disclosure when consumers behave strategically. Away from research: long-distance running, photography, and music.</p>
     </div>
     <figure class="profile-photo">
       <img src="{{ site.profile_image | relative_url }}" alt="{{ site.title }}" />
