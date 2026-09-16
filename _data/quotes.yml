@@ -1,0 +1,24 @@
+# ============================================================
+# 首页 Hero 名言/歌词轮播数据
+# 每 6 秒随机轮换一条；中英文首页各自显示对应语言（缺哪个就显示另一个）
+#
+# 添加格式（把下面示例复制一行改掉即可）：
+# - en: "English quote"
+#   zh: "中文引文（可省略）"
+#   author: "作者名"
+# ============================================================
+- en: "Be water, my friend."
+  zh: "以无法为有法，以无限为有限。"
+  author: "Bruce Lee 李小龙"
+
+- en: "I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times."
+  zh: "我不怕会一万种踢法的人，只怕把一种踢法练了一万次的人。"
+  author: "Bruce Lee 李小龙"
+
+- en: "Absorb what is useful, discard what is not, add what is uniquely your own."
+  zh: "吸收有用的，摒弃无用的，再加上你独有的。"
+  author: "Bruce Lee 李小龙"
+
+- en: "Long-term concentration is the price of doing something great."
+  zh: ""
+  author: "梁博"

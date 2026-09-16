@@ -106,8 +106,44 @@
         });
       }
 
-      if (document.getElementById('search-input') && window.simpleJekyllSearch) {
-        simpleJekyllSearch({
+      var rotator = document.getElementById('hero-quotes');
+      if (rotator) {
+        var quotes = rotator.querySelectorAll('.hero-quote');
+        if (quotes.length > 1) {
+          var current = 0;
+          var interval = parseInt(rotator.getAttribute('data-interval'), 10) || 6000;
+          var timer = null;
+          var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          var pickNext = function () {
+            var next = current;
+            while (next === current) {
+              next = Math.floor(Math.random() * quotes.length);
+            }
+            quotes[current].classList.remove('is-active');
+            quotes[next].classList.add('is-active');
+            current = next;
+          };
+
+          var start = function () {
+            if (timer || reduceMotion) return;
+            timer = setInterval(pickNext, interval);
+          };
+          var stop = function () {
+            clearInterval(timer);
+            timer = null;
+          };
+
+          start();
+          rotator.addEventListener('mouseenter', stop);
+          rotator.addEventListener('mouseleave', start);
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden) { stop(); } else { start(); }
+          });
+        }
+      }
+
+      if (document.getElementById('search-input') && window.simpleJekyllSearch) {        simpleJekyllSearch({
           searchInput: document.getElementById('search-input'),
           resultsContainer: document.getElementById('search-results'),
           json: '{{ search_json | relative_url }}',

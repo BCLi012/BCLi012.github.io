@@ -11,7 +11,10 @@ lang: en
     <a class="button" href="{{ '/about/' | relative_url }}">About me</a>
     <a class="button button-ghost" href="{{ '/projects/' | relative_url }}">View projects</a>
   </div>
+  {% include hero-quotes.html %}
 </section>
+
+{% include ink-divider.html %}
 
 <section class="section">
   <div class="section-head">

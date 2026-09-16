@@ -9,8 +9,8 @@
   --text: #1d1d1f;
   --text-secondary: #6e6e73;
   --text-tertiary: #86868b;
-  --accent: #0068d6;
-  --accent-strong: #0058b8;
+  --accent: #111114;
+  --accent-strong: #000000;
   --on-accent: #ffffff;
   --border: rgba(0, 0, 0, 0.09);
   --border-strong: rgba(0, 0, 0, 0.16);
@@ -31,9 +31,9 @@ html[data-theme="dark"] {
   --text: #f5f5f7;
   --text-secondary: #a1a1a6;
   --text-tertiary: #77777c;
-  --accent: #4d9fff;
-  --accent-strong: #79b6ff;
-  --on-accent: #0b0b0d;
+  --accent: #f5f5f7;
+  --accent-strong: #ffffff;
+  --on-accent: #101013;
   --border: rgba(255, 255, 255, 0.10);
   --border-strong: rgba(255, 255, 255, 0.2);
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 6px 20px rgba(0, 0, 0, 0.35);
@@ -70,7 +70,8 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-strong); }
 
-::selection { background: rgba(0, 104, 214, 0.18); }
+::selection { background: rgba(0, 0, 0, 0.08); }
+html[data-theme="dark"] ::selection { background: rgba(255, 255, 255, 0.14); }
 
 h1, h2, h3, h4 {
   letter-spacing: -0.02em;
@@ -179,9 +180,10 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 }
 #search-input::placeholder { color: var(--text-tertiary); }
 #search-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0, 104, 214, 0.15);
+  border-color: var(--text-secondary);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
+html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.10); }
 
 #search-results {
   position: absolute;
@@ -240,6 +242,53 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 }
 
 .hero-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ---------- Hero quote rotator ---------- */
+.hero-quotes {
+  display: grid;
+  margin: 2.25rem 0 0;
+}
+
+.hero-quote {
+  grid-area: 1 / 1;
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  border-left: 2px solid var(--text);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+.hero-quote.is-active { opacity: 1; transform: none; pointer-events: auto; }
+
+.hero-quote-text {
+  margin: 0;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.hero-quote-author {
+  margin-top: 0.4rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--text-tertiary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-quote { transition: none; transform: none; }
+}
+
+/* ---------- Ink divider ---------- */
+.ink-divider { margin: 2.5rem 0; opacity: 0.55; }
+.ink-divider svg { display: block; width: 100%; height: 12px; }
+.ink-divider path {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
 
 /* ---------- Buttons ---------- */
 .button {
@@ -334,8 +383,9 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .tag {
   padding: 0.1rem 0.6rem;
+  border: 1px solid var(--border-strong);
   border-radius: 999px;
-  background: var(--bg-code);
+  background: transparent;
   color: var(--text-secondary);
   font-size: 0.75rem;
 }
@@ -362,12 +412,29 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
 .prose h1 { font-size: 1.9rem; margin: 0 0 1rem; }
 .prose h2 { font-size: 1.35rem; margin: 2rem 0 0.6rem; }
 .prose h3 { font-size: 1.12rem; margin: 1.6rem 0 0.5rem; }
+.prose a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+}
+.prose a:hover { color: var(--accent-strong); text-decoration-color: currentColor; }
+
+/* 正文下划线不适用于界面元素 */
+.prose .button,
+.prose .entry-title,
+.prose .see-all,
+.prose .card a,
+.prose .journal-list a,
+.prose .subtitle-return {
+  text-decoration: none;
+}
 .prose p { margin: 0 0 1rem; }
 .prose li { margin-bottom: 0.35rem; }
 .prose blockquote {
   margin: 1.4rem 0;
   padding: 0.35rem 1.1rem;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--text);
   color: var(--text-secondary);
   background: var(--bg-code);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
