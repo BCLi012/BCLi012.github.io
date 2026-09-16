@@ -515,6 +515,117 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
 .article-back { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.92rem; }
 
 /* ==========================================================================
+   Reading progress bar
+   ========================================================================== */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--text);
+  z-index: 200;
+  transition: width 0.1s linear;
+}
+
+/* ==========================================================================
+   Profile header (al-folio style: name, meta line, photo + bio)
+   ========================================================================== */
+.profile { padding: 2rem 0 0; }
+
+.profile-name {
+  margin: 0 0 0.55rem;
+  font-size: clamp(2rem, 4.5vw, 2.7rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.profile-meta {
+  margin: 0 0 2rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.prose .profile-meta a { color: var(--text-secondary); text-decoration: none; }
+.prose .profile-meta a:hover { color: var(--text); }
+
+.profile-body {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: 2.25rem;
+  align-items: start;
+}
+
+.profile-photo { margin: 0; }
+.profile-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.profile-bio > p {
+  margin: 0 0 1.35rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.profile-elsewhere { margin-top: 1.5rem; }
+
+.prose .profile-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.prose .profile-social:hover { color: var(--text); }
+.profile-social svg { width: 1.05rem; height: 1.05rem; }
+
+/* ==========================================================================
+   Date-aligned entry table
+   ========================================================================== */
+.entry-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.entry-table tr { border-bottom: 1px solid var(--border); }
+.entry-table tbody tr:last-child { border-bottom: none; }
+
+.entry-table-date {
+  width: 7.5rem;
+  padding: 0.7rem 1rem 0.7rem 0;
+  vertical-align: baseline;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+}
+
+.entry-table-body { padding: 0.7rem 0; vertical-align: baseline; }
+
+.prose a.entry-table-title {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+.prose a.entry-table-title:hover { color: var(--accent); }
+
+.entry-table-summary {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 .site-footer {
@@ -537,6 +648,15 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
   .main-content { padding-top: 1.8rem; }
   .hero { padding-top: 1.5rem; }
   .journal-list li { flex-direction: column; gap: 0.1rem; }
+
+  /* 资料块与日期列表在窄屏改为堆叠 */
+  .profile { padding-top: 1.25rem; }
+  .profile-body { grid-template-columns: 1fr; gap: 1.35rem; }
+  .profile-photo { max-width: 190px; }
+
+  .entry-table tr { display: block; padding: 0.7rem 0; }
+  .entry-table-date { display: block; width: auto; padding: 0 0 0.15rem; }
+  .entry-table-body { display: block; padding: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

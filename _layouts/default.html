@@ -21,6 +21,7 @@
   <script defer src="{{ '/assets/vendor/simple-jekyll-search.min.js' | relative_url }}"></script>
 </head>
 <body>
+  <div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
   {% if page.lang == 'zh' %}
     {% assign base = '/zh' %}
     {% assign nav_home = '首页' %}
@@ -149,6 +150,17 @@
             if (document.hidden) { stop(); } else { start(); }
           });
         }
+      }
+
+      var progressBar = document.getElementById('progress-bar');
+      if (progressBar) {
+        var updateProgress = function () {
+          var max = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+        };
+        updateProgress();
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        window.addEventListener('resize', updateProgress);
       }
 
       var searchToggle = document.getElementById('search-toggle');

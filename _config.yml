@@ -1,5 +1,7 @@
 title: "Bruce"
 description: "Personal site — projects, research, arts, and outdoor adventures."
+# 首页头像：上传照片后把这里换成你的图片路径即可（例如 /assets/images/profile.jpg）
+profile_image: "/assets/images/profile-placeholder.svg"
 url: "https://bclee012.github.io" # update
 baseurl: "" # keep empty for username.github.io
 markdown: kramdown

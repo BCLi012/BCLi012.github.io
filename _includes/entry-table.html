@@ -1,0 +1,28 @@
+{% comment %}
+  日期左对齐列表（al-folio 风格）：日期 ｜ 标题 + 摘要
+  用法：{% include entry-table.html items=site.projects lang='en' limit=3 %}
+{% endcomment %}
+{% assign tbl_lang = include.lang | default: 'en' %}
+{% if tbl_lang == 'zh' %}
+  {% assign items = include.items | where_exp: 'item', 'item.lang == "zh"' %}
+  {% assign tbl_empty = '这里还没有内容。' %}
+{% else %}
+  {% assign items = include.items | where_exp: 'item', 'item.lang != "zh"' %}
+  {% assign tbl_empty = 'Nothing here yet.' %}
+{% endif %}
+{% assign items = items | sort: 'date' | reverse %}
+{% assign tbl_limit = include.limit | default: 5 | plus: 0 %}
+{% if items.size > 0 %}
+<table class="entry-table">
+  <tbody>
+    {% for item in items limit: tbl_limit %}
+    <tr>
+      <th class="entry-table-date" scope="row">{{ item.date | date: "%Y-%m-%d" }}</th>
+      <td class="entry-table-body"><a class="entry-table-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>{% if item.summary %}<span class="entry-table-summary">{{ item.summary }}</span>{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="empty">{{ tbl_empty }}</p>
+{% endif %}
