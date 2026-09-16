@@ -7,10 +7,13 @@
   icon: github
   url: "https://github.com/BcLee012"
 
-- label: Email
-  label_zh: 邮箱
-  icon: mail
-  url: "mailto:fairly_bc@whu.edu.cn"
+- label: LinkedIn
+  icon: linkedin
+  url: "https://www.linkedin.com/in/bingcheng-li-65301a33a/"
+
+- label: X
+  icon: x
+  url: "https://x.com/libingchen63278"
 
 - label: 知乎
   icon: zhihu
@@ -20,7 +23,7 @@
   icon: xiaohongshu
   url: "https://www.xiaohongshu.com/user/profile/62bae38d000000001b02bbff"
 
-# X：拿到公开主页地址（形如 https://x.com/用户名）后取消注释即可启用
-# - label: X
-#   icon: x
-#   url: ""
+- label: Email
+  label_zh: 邮箱
+  icon: mail
+  url: "mailto:fairly_bc@whu.edu.cn"
