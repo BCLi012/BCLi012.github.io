@@ -646,13 +646,50 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: 2.2rem 0 2.4rem;
-  text-align: center;
+  padding: 2.2rem 0 1.8rem;
   font-size: 0.85rem;
   color: var(--text-tertiary);
 }
 .site-footer a { color: var(--text-secondary); }
-.site-footer-note { display: block; }
+.site-footer a:hover { color: var(--text); }
+
+/* 页脚底部：左版权、右署名，窄屏居中堆叠 */
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border);
+}
+.footer-copy, .footer-credits { margin: 0; }
+
+/* 回到顶部按钮（滚动后出现） */
+.back-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 150;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, color 0.15s ease, border-color 0.15s ease;
+}
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.back-to-top:hover { color: var(--text); border-color: var(--text); background: var(--bg-code); }
+.back-to-top svg { width: 1.05rem; height: 1.05rem; }
 
 /* ==========================================================================
    Responsive
@@ -671,6 +708,10 @@ html:not([data-theme="dark"]) .icon-moon { display: none; }
   .entry-table tr { display: block; padding: 0.7rem 0; }
   .entry-table-date { display: block; width: auto; padding: 0 0 0.15rem; }
   .entry-table-body { display: block; padding: 0; }
+
+  /* 页脚在窄屏居中堆叠 */
+  .footer-bottom { justify-content: center; text-align: center; }
+  .back-to-top { right: 1rem; bottom: 1rem; width: 2.4rem; height: 2.4rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

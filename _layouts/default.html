@@ -96,9 +96,16 @@
   <footer class="site-footer">
     <div class="wrap">
       {% include quote-rotator.html %}
-      <small class="site-footer-note">© {{ site_name }} · {{ "now" | date: "%Y" }} · <a href="{{ base | append: '/about/' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a> · Built with <a href="https://jekyllrb.com/">Jekyll</a></small>
+      <div class="footer-bottom">
+        <p class="footer-copy">© {{ "now" | date: "%Y" }} {{ site_name }} · <a href="{{ base | append: '/about/' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a></p>
+        <p class="footer-credits">{% if page.lang == 'zh' %}由 <a href="https://jekyllrb.com/">Jekyll</a> 驱动 · 托管于 <a href="https://pages.github.com/">GitHub Pages</a>{% else %}Powered by <a href="https://jekyllrb.com/">Jekyll</a> · Hosted on <a href="https://pages.github.com/">GitHub Pages</a>{% endif %}</p>
+      </div>
     </div>
   </footer>
+
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="{% if page.lang == 'zh' %}回到顶部{% else %}Back to top{% endif %}" title="{% if page.lang == 'zh' %}回到顶部{% else %}Back to top{% endif %}">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+  </button>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -152,6 +159,20 @@
             if (document.hidden) { stop(); } else { start(); }
           });
         }
+      }
+
+      var backToTop = document.getElementById('back-to-top');
+      if (backToTop) {
+        var reduceMotionPref = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var toggleBackToTop = function () {
+          if (window.scrollY > 400) { backToTop.classList.add('is-visible'); }
+          else { backToTop.classList.remove('is-visible'); }
+        };
+        toggleBackToTop();
+        window.addEventListener('scroll', toggleBackToTop, { passive: true });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: reduceMotionPref ? 'auto' : 'smooth' });
+        });
       }
 
       var progressBar = document.getElementById('progress-bar');
