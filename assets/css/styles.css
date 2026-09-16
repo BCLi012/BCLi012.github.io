@@ -539,20 +539,12 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
 .profile { padding: 2rem 0 0; }
 
 .profile-name {
-  margin: 0 0 0.55rem;
+  margin: 0 0 1.85rem;
   font-size: clamp(2rem, 4.5vw, 2.7rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
 }
-
-.profile-meta {
-  margin: 0 0 2rem;
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-}
-.prose .profile-meta a { color: var(--text-secondary); text-decoration: none; }
-.prose .profile-meta a:hover { color: var(--text); }
 
 .profile-body {
   display: grid;
@@ -577,24 +569,6 @@ html[data-theme="dark"] #search-input:focus { box-shadow: 0 0 0 3px rgba(255, 25
   line-height: 1.7;
   color: var(--text-secondary);
 }
-
-.profile-elsewhere {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.35rem;
-  margin-top: 1.5rem;
-}
-
-.prose .profile-social {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  text-decoration: none;
-}
-.prose .profile-social:hover { color: var(--text); }
-.profile-social svg { width: 1.05rem; height: 1.05rem; }
 
 /* ==========================================================================
    Date-aligned entry table

@@ -90,7 +90,7 @@
   <footer class="site-footer">
     <div class="wrap">
       {% include quote-rotator.html %}
-      <small class="site-footer-note">© {{ site.title }} · {{ "now" | date: "%Y" }} · Built with <a href="https://jekyllrb.com/">Jekyll</a></small>
+      <small class="site-footer-note">© {{ site.title }} · {{ "now" | date: "%Y" }} · <a href="{{ base | append: '/about/' | relative_url }}">{% if page.lang == 'zh' %}关于{% else %}About{% endif %}</a> · Built with <a href="https://jekyllrb.com/">Jekyll</a></small>
     </div>
   </footer>
 
