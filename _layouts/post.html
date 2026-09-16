@@ -2,7 +2,13 @@
 layout: default
 ---
 {% assign section = page.url | split: '/' %}
-{% capture back_href %}{% if page.lang == 'zh' %}/zh/{% else %}/{% endif %}{{ section[1] }}/{% endcapture %}
+{% if page.lang == 'zh' %}
+  {% assign col = section[2] %}
+  {% capture back_href %}/zh/{{ col }}/{% endcapture %}
+{% else %}
+  {% assign col = section[1] %}
+  {% capture back_href %}/{{ col }}/{% endcapture %}
+{% endif %}
 <article>
   <header class="post-head">
     <h1 class="post-title">{{ page.title }}</h1>
@@ -13,7 +19,7 @@ layout: default
   </header>
   {{ content }}
   {% if page.lang == 'zh' %}
-    {% case section[1] %}
+    {% case col %}
       {% when 'projects' %}{% assign back_label = '返回项目' %}
       {% when 'research' %}{% assign back_label = '返回研究' %}
       {% when 'arts' %}{% assign back_label = '返回艺术' %}
@@ -23,6 +29,6 @@ layout: default
     {% endcase %}
     <p class="article-back"><a href="{{ back_href | relative_url }}">← {{ back_label }}</a></p>
   {% else %}
-    <p class="article-back"><a href="{{ back_href | relative_url }}">← Back to {{ section[1] | capitalize }}</a></p>
+    <p class="article-back"><a href="{{ back_href | relative_url }}">← Back to {{ col | capitalize }}</a></p>
   {% endif %}
 </article>
