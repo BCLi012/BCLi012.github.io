@@ -43,16 +43,14 @@ lang: en
 
 <section class="section">
   <div class="section-head">
-    <h2>Latest Posts</h2>
-    <a class="see-all" href="{{ '/thoughts/' | relative_url }}">All →</a>
+    <h2>Latest posts</h2>
   </div>
   {% include entry-table.html items=site.thoughts lang='en' limit=4 %}
 </section>
 
 <section class="section">
   <div class="section-head">
-    <h2>Selected Projects</h2>
-    <a class="see-all" href="{{ '/projects/' | relative_url }}">All →</a>
+    <h2>Selected projects</h2>
   </div>
   {% include entry-table.html items=site.projects lang='en' limit=3 %}
 </section>

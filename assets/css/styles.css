@@ -123,6 +123,7 @@ h1, h2, h3, h4 {
 .site-nav {
   display: flex;
   flex-wrap: wrap;
+  margin-left: auto;
   gap: 0.1rem;
 }
 
@@ -136,7 +137,7 @@ h1, h2, h3, h4 {
 .site-nav a:hover { color: var(--text); background: var(--bg-code); }
 .site-nav a.active { color: var(--accent); font-weight: 600; }
 
-.header-actions { display: flex; align-items: center; gap: 0.35rem; margin-left: auto; }
+.header-actions { display: flex; align-items: center; gap: 0.35rem; }
 
 .lang-switch {
   padding: 0.28rem 0.7rem;
