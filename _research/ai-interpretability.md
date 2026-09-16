@@ -1,7 +1,7 @@
 ---
 title: "Interpretable AI: A Short Overview"
 date: 2024-12-05
-authors: ["Your Name"]
+authors: ["Bruce"]
 tags: [research, ai, interpretability]
 summary: "Notes and links on methods for interpreting machine learning models."
 lang: en

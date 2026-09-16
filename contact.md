@@ -2,10 +2,13 @@
 title: Contact
 layout: default
 lang: en
+summary: "How to reach me."
 permalink: /contact/
 ---
-You can use Formspree or Getform for forms. Example:
+The best ways to reach me:
 
 Email: your.email@example.com
 
-Or add a static contact form that posts to a form endpoint.
+Or find me on GitHub: [@BcLee012](https://github.com/BcLee012)
+
+中文版请见[这里](/zh/contact/)。

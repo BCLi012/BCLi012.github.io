@@ -1,7 +1,7 @@
 ---
 title: "可解释 AI 概览"
 date: 2024-12-05
-authors: ["Your Name"]
+authors: ["Bruce"]
 tags: [研究, AI, 可解释性]
 summary: "关于机器学习模型可解释性方法的笔记与参考。"
 lang: zh

@@ -1,7 +1,7 @@
 ---
 title: "Example Research Paper"
 date: 2024-11-01
-authors: ["Your Name"]
+authors: ["Bruce"]
 summary: "A short summary of research contributions."
 lang: en
 ---
